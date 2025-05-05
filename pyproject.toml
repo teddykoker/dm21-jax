@@ -1,0 +1,30 @@
+[project]
+name = "dm21-jax"
+version = "0.1.0"
+description = "JAX port of the DM21 exchange correlation functional"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "jax>=0.4.34; sys_platform == 'darwin'",
+    "jax[cuda12]>=0.4.34; sys_platform == 'linux'",
+    "pyscf>=2.1.1,<=2.6.2",
+    "equinox>=0.12.1",
+    "chex>=0.1.89",
+    "attrs>=25.3.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include = ["dm21_jax/*"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "scipy==1.15.2",
+    "absl-py==1.4.0",
+    "tensorflow==2.19.0",
+    "ruff>=0.11.8",
+]
